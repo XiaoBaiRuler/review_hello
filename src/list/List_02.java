@@ -5,7 +5,7 @@ package list;
  * @Date 2020/12/23 9:23
  * @Version 1.0
  */
-public class list_02 {
+public class List_02 {
     public static void main(String[] args) {
         ListNode head = new ListNode(1, null);
         for (int i = 1; i < 4; i++) {

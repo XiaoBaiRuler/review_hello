@@ -9,8 +9,8 @@ package list;
 public class List_04 {
 
     public static void main(String[] args) {
-        int[] li1 = {1, 2, 4};
-        int[] li2 = {1, 3, 4};
+        int[] li1 = {};
+        int[] li2 = {1, 3, 4, 6};
         ListNode l1 = addListNode(li1);
         ListNode l2 = addListNode(li2);
         listNodeToString(l1);
@@ -20,10 +20,15 @@ public class List_04 {
     }
     
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode next1 = l1.next;
-        ListNode next2 = l2.next;
-        ListNode pre = null;
-        // 初始化先pre
+        if (l1 == null){
+            return l2;
+        }else if (l2 == null){
+            return l1;
+        }
+        ListNode next1 = l1;
+        ListNode next2 = l2;
+        ListNode pre;
+        // 初始化
         if (next1.val >= next2.val){
             pre = next2;
             next2 = next2.next;
@@ -32,24 +37,34 @@ public class List_04 {
             pre = next1;
             next1 = next1.next;
         }
-        pre = pre.next;
+        ListNode result = pre;
+        while (true){
+            // next1 == null && next2 != null
+            if (next1 == null && next2 != null){
+                pre.next = next2;
+                break;
+            }
+            else if (next2 == null && next1 != null){
+                pre.next = next1;
+                break;
+            }
+            else if (next1 == null){
+                break;
+            }
 
-
-
-
-        return l1;
-    }
-
-    public static ListNode change(ListNode l1, ListNode l2){
-        ListNode result = null;
-        if (l1.val > l2.val){
-            result = l2;
-        }else{
-            result = l1;
+            // 当1 > 2
+            if(next1.val >= next2.val){
+                pre.next = next2;
+                pre = pre.next;
+                next2 = next2.next;
+            }
+            // 当1 < 2
+            else{
+                pre.next = next1;
+                pre = pre.next;
+                next1 = next1.next;
+            }
         }
-
-
-
         return result;
     }
 

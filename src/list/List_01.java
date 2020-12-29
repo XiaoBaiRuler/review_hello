@@ -4,7 +4,7 @@ package list;
  * @Date 2020/12/23 9:13
  * @Version 1.0
  */
-public class list_01 {
+public class List_01 {
     public static void main(String[] args) {
         ListNode node = new ListNode(4);
         ListNode b= new ListNode(5);
