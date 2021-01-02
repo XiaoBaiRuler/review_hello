@@ -18,7 +18,7 @@ public class Tree_04 {
         System.out.println(levelOrder(root));
     }
 
-    public static List<List<Integer>> levelOrder(TreeNode root) {
+    public static List<List<Integer>> levelOrderOld(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
@@ -45,5 +45,32 @@ public class Tree_04 {
             }
         }
         return newQueue;
+    }
+
+    /**
+     * 将迭代一个，变成每次迭代queue.size个
+     * @param root root
+     * @return result
+     */
+    public static List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            int all = queue.size();
+            ArrayList<Integer> list = new ArrayList<>(all);
+            for (int i = 0; i < all; i++) {
+                TreeNode item = queue.remove();
+                list.add(item.val);
+                if (item.left != null){
+                    queue.add(item.left);
+                }
+                if (item.right != null){
+                    queue.add(item.right);
+                }
+            }
+            result.add(list);
+        }
+        return result;
     }
 }
