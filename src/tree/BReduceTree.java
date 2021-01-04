@@ -5,7 +5,7 @@ package tree;
  * @Date 2021/1/2 23:58
  * @Version 1.0
  */
-public class BTree {
+public class BReduceTree {
     public static void main(String[] args) {
 
     }
