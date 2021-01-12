@@ -1,6 +1,12 @@
 package queue;
 
 /**
+ * 空: count == 0
+ * 满: count == MAX_QUERY_SIZE
+ *
+ * 优点: 额外知道具体使用了多少个空间
+ * 缺点: %还是在
+ *
  * @Author xiaobai
  * @Date 2021/1/12 13:14
  * @Version 1.0
@@ -17,15 +23,26 @@ public class TestQueue {
 //        }
 //        System.out.println(circularQueueLessOne.getRealSize());
 
-        CircularQueueByTag<Integer> circularQueueByTag = new CircularQueueByTag<>();
+//        CircularQueueByTag<Integer> circularQueueByTag = new CircularQueueByTag<>();
+//        for (int i = 0; i < 10; i++) {
+//            circularQueueByTag.enqueue(i + 1);
+//        }
+//        for (int i = 0; i < 4; i++) {
+//            circularQueueByTag.dequeue();
+//            circularQueueByTag.enqueue(11);
+//        }
+//        System.out.println(circularQueueByTag);
+
+
+        CircularQueueByCount<Integer> circularQueueByCount = new CircularQueueByCount<>();
         for (int i = 0; i < 10; i++) {
-            circularQueueByTag.enqueue(i + 1);
+            circularQueueByCount.enqueue(i + 1);
         }
         for (int i = 0; i < 4; i++) {
-            circularQueueByTag.dequeue();
-            circularQueueByTag.enqueue(11);
+            circularQueueByCount.dequeue();
+            circularQueueByCount.enqueue(11);
         }
-        System.out.println(circularQueueByTag);
+        System.out.println(circularQueueByCount.getQueueSize());
 
     }
 }
