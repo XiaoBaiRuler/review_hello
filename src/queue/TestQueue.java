@@ -7,13 +7,16 @@ package queue;
  */
 public class TestQueue {
     public static void main(String[] args) throws Exception {
-        SequentialQueue<Integer> sequentialQueue = new SequentialQueue<>();
-        for (int i = 0; i < 10; i++) {
-            sequentialQueue.enqueue(i + 1);
+        CircularQueueLessOne<Integer> circularQueueLessOne = new CircularQueueLessOne<>();
+        for (int i = 0; i < 9; i++) {
+            circularQueueLessOne.enqueue(i + 1);
         }
-        for (int i = 0; i < 10; i++) {
-            sequentialQueue.dequeue();
+        for (int i = 0; i < 4; i++) {
+            circularQueueLessOne.dequeue();
+            circularQueueLessOne.enqueue(11);
         }
-        System.out.println(sequentialQueue.getRealSize());
+        System.out.println(circularQueueLessOne.getRealSize());
+
+
     }
 }
