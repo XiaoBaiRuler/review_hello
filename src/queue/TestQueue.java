@@ -7,16 +7,25 @@ package queue;
  */
 public class TestQueue {
     public static void main(String[] args) throws Exception {
-        CircularQueueLessOne<Integer> circularQueueLessOne = new CircularQueueLessOne<>();
-        for (int i = 0; i < 9; i++) {
-            circularQueueLessOne.enqueue(i + 1);
+//        CircularQueueLessOne<Integer> circularQueueLessOne = new CircularQueueLessOne<>();
+//        for (int i = 0; i < 9; i++) {
+//            circularQueueLessOne.enqueue(i + 1);
+//        }
+//        for (int i = 0; i < 4; i++) {
+//            circularQueueLessOne.dequeue();
+//            circularQueueLessOne.enqueue(11);
+//        }
+//        System.out.println(circularQueueLessOne.getRealSize());
+
+        CircularQueueByTag<Integer> circularQueueByTag = new CircularQueueByTag<>();
+        for (int i = 0; i < 10; i++) {
+            circularQueueByTag.enqueue(i + 1);
         }
         for (int i = 0; i < 4; i++) {
-            circularQueueLessOne.dequeue();
-            circularQueueLessOne.enqueue(11);
+            circularQueueByTag.dequeue();
+            circularQueueByTag.enqueue(11);
         }
-        System.out.println(circularQueueLessOne.getRealSize());
-
+        System.out.println(circularQueueByTag);
 
     }
 }
