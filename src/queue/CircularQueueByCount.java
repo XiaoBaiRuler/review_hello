@@ -7,7 +7,7 @@ package queue;
  */
 public class CircularQueueByCount <AnyType>{
     private AnyType[] queue;
-    private final static int MAX_QUEUE_SIZE = 10;
+    private final static int MAX_QUEUE_SIZE = 2;
     private int rear;
     private int front;
     private int count;

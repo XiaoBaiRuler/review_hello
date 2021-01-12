@@ -34,15 +34,26 @@ public class TestQueue {
 //        System.out.println(circularQueueByTag);
 
 
-        CircularQueueByCount<Integer> circularQueueByCount = new CircularQueueByCount<>();
-        for (int i = 0; i < 10; i++) {
-            circularQueueByCount.enqueue(i + 1);
-        }
-        for (int i = 0; i < 4; i++) {
-            circularQueueByCount.dequeue();
-            circularQueueByCount.enqueue(11);
-        }
-        System.out.println(circularQueueByCount.getQueueSize());
+//        CircularQueueByCount<Integer> circularQueueByCount = new CircularQueueByCount<>();
+//        for (int i = 0; i < 10; i++) {
+//            circularQueueByCount.enqueue(i + 1);
+//        }
+//        for (int i = 0; i < 4; i++) {
+//            circularQueueByCount.dequeue();
+//            circularQueueByCount.enqueue(11);
+//        }
+//        System.out.println(circularQueueByCount.getQueueSize());
+
+        MyCircularQueue myCircularQueue = new MyCircularQueue(2);
+        myCircularQueue.enQueue(1);
+        myCircularQueue.enQueue(2);
+        myCircularQueue.deQueue();
+        myCircularQueue.enQueue(3);
+        myCircularQueue.deQueue();
+        myCircularQueue.enQueue(3);
+        myCircularQueue.deQueue();
+        myCircularQueue.enQueue(3);
+        myCircularQueue.deQueue();
 
     }
 }
