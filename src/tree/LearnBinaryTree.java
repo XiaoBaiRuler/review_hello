@@ -18,6 +18,7 @@ public class LearnBinaryTree {
         System.out.println(inorderTraversalByMirrors(root));
         subsequentTraversal(root);
         System.out.println(subsequentTraversalByMirrors(root));
+        subsequentTraversalByStack(root);
     }
 
     /**
@@ -253,6 +254,39 @@ public class LearnBinaryTree {
         subsequentTraversal(root.left);
         subsequentTraversal(root.right);
         System.out.print(root.val + " ");
+    }
+
+    /**
+     * 借助堆栈的后续遍历二叉树
+     * 1. 如果栈顶元素非空且左节点存在，将其入栈，若不存在则进入下一步
+     * 2. 判断上一次出栈节点是否当前节点的右节点，或者当前节点是否存在右节点
+     * 3. 如果以上条件满足，将当前节点出栈输出；否则将右节点压栈，跳到1.
+     *
+     * @param root root
+     */
+    public static void subsequentTraversalByStack(TreeNode root){
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        TreeNode lastNode = null;
+        while (!stack.isEmpty()){
+            // 到达最左端的叶子节点
+            while (stack.peek().left != null){
+                stack.push(stack.peek().left);
+            }
+            while (!stack.isEmpty()){
+                // lastNode == stack.peek().right: 证明已经访问过右节点，可以输出根节点了
+                if ((lastNode == stack.peek().right) || stack.peek().right == null){
+                    TreeNode node = stack.pop();
+                    System.out.print(node.val + " ");
+                    lastNode = node;
+                }
+                // 访问右节点
+                else if (stack.peek().right != null){
+                    stack.push(stack.peek().right);
+                    break;
+                }
+            }
+        }
     }
 
     /**
