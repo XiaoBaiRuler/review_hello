@@ -13,7 +13,6 @@ public class Tree_06 {
         TreeNode root = new TreeNode(1, null, null);
         LearnBinaryTree.buildACompleteBinaryTree(root, 3);
         System.out.println(hasPathSum(root, 19));
-
     }
 
     public static boolean hasPathSum(TreeNode root, int sum) {

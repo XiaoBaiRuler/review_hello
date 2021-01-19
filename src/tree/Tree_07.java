@@ -1,51 +1,36 @@
 package tree;
 
-import java.util.HashMap;
-
 /**
+ * 中序 + 后续构造二叉树
  * @Author xiaobai
  * @Date 2021/1/6 20:28
  * @Version 1.0
  */
 public class Tree_07 {
     public static void main(String[] args) {
-
+        int[] inorder = {-1};
+        int[] postorder = {-1};
+        TreeNode root = buildTree(inorder, postorder);
+        LearnBinaryTree.breadthFirstSearch(root);
     }
 
     public static TreeNode buildTree(int[] inorder, int[] postorder) {
-        int all = inorder.length;
-        if (all == 0){
-            return null;
-        }
-        int i = 0;
-        for (; i < all; i++) {
-            if (inorder[i] == postorder[all - 1]){
-                break;
-            }
-        }
-        // 记录postorder的索引
-        HashMap<Integer, Integer> hashMap = new HashMap<>(16);
-        for (int j = 0; j < all; j++) {
-            hashMap.put(postorder[j], j);
-        }
-        TreeNode root = new TreeNode(postorder[all - 1], null, null);
-        build(inorder, hashMap, 0, i - 1, i + 1, all - 1, root);
+        int all = inorder.length - 1;
+        TreeNode root = build(inorder, 0, all, postorder, 0,  all);
         return root;
     }
 
-    public static void build(int[] inorder, HashMap<Integer, Integer> hashMap, int i, int j, int m, int n, TreeNode root){
-        if (i == j){
-            root.left = new TreeNode(inorder[i], null, null);
+    public static TreeNode build(int[] inorder,int inBegin, int inEnd, int[] postorder, int poBegin, int poEnd){
+        if (inBegin > inEnd || poBegin > poEnd){
+            return null;
         }
-        // 如何找出下一次缩小的范围？
-        else{
-
+        TreeNode node = new TreeNode(postorder[poEnd]);
+        for (int i = inBegin; i <= inEnd ; i++) {
+            if (inorder[i] == postorder[poEnd]){
+                node.left = build(inorder, inBegin, i - 1, postorder, poBegin, poBegin + i - inBegin - 1);
+                node.right = build(inorder, i + 1, inEnd, postorder, poBegin + i - inBegin, poEnd - 1);
+            }
         }
-        if (m == n){
-            root.right = new TreeNode(inorder[m], null, null);
-        }
-        else{
-
-        }
+        return node;
     }
 }
