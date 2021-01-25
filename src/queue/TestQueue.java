@@ -44,16 +44,25 @@ public class TestQueue {
 //        }
 //        System.out.println(circularQueueByCount.getQueueSize());
 
-        MyCircularQueue myCircularQueue = new MyCircularQueue(2);
-        myCircularQueue.enQueue(1);
-        myCircularQueue.enQueue(2);
-        myCircularQueue.deQueue();
-        myCircularQueue.enQueue(3);
-        myCircularQueue.deQueue();
-        myCircularQueue.enQueue(3);
-        myCircularQueue.deQueue();
-        myCircularQueue.enQueue(3);
-        myCircularQueue.deQueue();
+//        MyCircularQueue myCircularQueue = new MyCircularQueue(2);
+//        myCircularQueue.enQueue(1);
+//        myCircularQueue.enQueue(2);
+//        myCircularQueue.deQueue();
+//        myCircularQueue.enQueue(3);
+//        myCircularQueue.deQueue();
+//        myCircularQueue.enQueue(3);
+//        myCircularQueue.deQueue();
+//        myCircularQueue.enQueue(3);
+//        myCircularQueue.deQueue();
+
+        ComInte[] comIntes = new ComInte[6];
+        for (int i = 0; i < 6; i++) {
+            comIntes[i] = new ComInte(i);
+        }
+        PriorityQueue<ComInte> priorityQueue = new PriorityQueue<>(comIntes);
+        System.out.println(priorityQueue.findMin().a);
+        System.out.println(priorityQueue.deleteMin().a);
+        System.out.println(priorityQueue.findMin().a);
 
     }
 }
