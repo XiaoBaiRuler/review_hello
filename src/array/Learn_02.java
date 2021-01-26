@@ -9,7 +9,7 @@ import java.util.Stack;
  */
 public class Learn_02 {
     public static void main(String[] args) {
-        int[] prices = {1, 2, 3, 4};
+        int[] prices = {7, 1, 5, 3, 6, 4};
         System.out.println(getBestChance(prices));
     }
 
@@ -47,7 +47,6 @@ public class Learn_02 {
             //买入出现中断信号
             input = in.peek();
             in.clear();
-            System.out.println(input);
             while (j < prices.length){
                 if (prices[j] > out.peek()){
                     out.push(prices[j]);
@@ -62,7 +61,6 @@ public class Learn_02 {
             if (!out.isEmpty()){
                 output = out.peek();
                 out.clear();
-                System.out.println(output);
                 //结算
                 total += (output - input);
             }
